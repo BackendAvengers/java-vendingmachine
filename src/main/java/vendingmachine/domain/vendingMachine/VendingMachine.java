@@ -25,5 +25,18 @@ public class VendingMachine {
 		insertedMoney.buyProduct(productPrice);
 	}
 
-	
+	public boolean isNotPurchaseAvailable() {
+		if (products.isEnoughMoneyForPurchase(insertedMoney.getMoney()) && !products.isProductEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	public Map<Coin, Integer> giveReturn() {
+		return coins.getMinCoinCounts(insertedMoney.getMoney());
+	}
+
+	public int getInsertedMoney() {
+		return insertedMoney.getMoney();
+	}
 }
